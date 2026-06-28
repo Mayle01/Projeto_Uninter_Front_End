@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel do Gerente — Gestão da unidade, estoque, equipe e metas.">
+  <title>Painel do Gerente — Raízes do Nordeste</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar" id="gerenteSidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon" style="width:32px;height:32px;font-size:1rem;">🏪</div>
+        <span>Gerente <span class="text-gradient">Painel</span></span>
+      </div>
+      <div class="sidebar-section-title">Unidade</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="active">📊 Visão Geral</a>
+        <a href="#">📦 Estoque</a>
+        <a href="#">👥 Equipe</a>
+        <a href="#">📋 Pedidos</a>
+        <a href="#">📈 Metas</a>
+      </nav>
+      <div class="sidebar-section-title">Sistema</div>
+      <nav class="sidebar-nav">
+        <a href="admin.html">📊 Painel Matriz</a>
+        <a href="index.html">🏠 Voltar ao Site</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <button class="btn btn-secondary btn-sm mb-lg" onclick="document.getElementById('gerenteSidebar').classList.toggle('open')" style="display:none;" id="sidebarToggle2">☰ Menu</button>
+
+      <div class="admin-header">
+        <div>
+          <h1>Unidade <span class="text-gradient">Boa Viagem</span></h1>
+          <p class="header-meta">📍 Av. Conselheiro Aguiar, 1200 — Recife, PE</p>
+        </div>
+        <div class="admin-user">
+          <div>
+            <span class="text-sm" style="color:var(--text-secondary);">Gerente</span>
+            <div style="font-weight:600;">João Silva</div>
+          </div>
+          <div class="admin-avatar">JS</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon orange">📦</div><div class="stat-value">312</div><div class="stat-label">Pedidos Hoje</div><div class="stat-change positive">↑ 15% vs. ontem</div></div>
+        <div class="stat-card"><div class="stat-icon green">💰</div><div class="stat-value">R$ 12.480</div><div class="stat-label">Faturamento</div><div class="stat-change positive">↑ 10%</div></div>
+        <div class="stat-card"><div class="stat-icon blue">👥</div><div class="stat-value">8/10</div><div class="stat-label">Equipe Presente</div><div class="stat-change negative">2 ausências</div></div>
+        <div class="stat-card"><div class="stat-icon yellow">🎯</div><div class="stat-value">87%</div><div class="stat-label">Meta Diária</div><div class="stat-change positive">Faltam R$ 1.870</div></div>
+      </div>
+
+      <div class="manager-grid">
+        <!-- Inventory -->
+        <div class="chart-container">
+          <div class="chart-header"><h4>📦 Controle de Estoque</h4><button class="btn btn-sm btn-secondary">Atualizar</button></div>
+          <div class="inventory-item"><span class="inventory-name">Farinha de Tapioca</span><div><span class="inventory-qty ok">85 kg</span><div class="progress-bar"><div class="progress-fill green" style="width:85%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Carne de Sol</span><div><span class="inventory-qty medium">12 kg</span><div class="progress-bar"><div class="progress-fill yellow" style="width:35%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Queijo Coalho</span><div><span class="inventory-qty ok">25 kg</span><div class="progress-bar"><div class="progress-fill green" style="width:62%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Milho Flocado</span><div><span class="inventory-qty low">3 kg</span><div class="progress-bar"><div class="progress-fill red" style="width:8%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Leite de Coco</span><div><span class="inventory-qty medium">15 L</span><div class="progress-bar"><div class="progress-fill yellow" style="width:38%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Café Arábica</span><div><span class="inventory-qty ok">20 kg</span><div class="progress-bar"><div class="progress-fill green" style="width:70%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Manteiga de Garrafa</span><div><span class="inventory-qty low">2 L</span><div class="progress-bar"><div class="progress-fill red" style="width:5%"></div></div></div></div>
+          <div class="inventory-item"><span class="inventory-name">Ovos</span><div><span class="inventory-qty ok">120 un</span><div class="progress-bar"><div class="progress-fill green" style="width:80%"></div></div></div></div>
+        </div>
+
+        <!-- Team -->
+        <div class="chart-container">
+          <div class="chart-header"><h4>👥 Equipe do Dia</h4><span class="badge badge-info">Turno: Manhã/Tarde</span></div>
+          <div class="table-container" style="border:none;">
+            <table>
+              <thead><tr><th>Colaborador</th><th>Função</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Ana Costa</td><td>Cozinheira</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Pedro Souza</td><td>Atendente</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Maria Lima</td><td>Atendente</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Carlos Dias</td><td>Cozinheiro</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Fernanda Reis</td><td>Caixa</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Lucas Alves</td><td>Atendente</td><td><span class="badge badge-error">Ausente</span></td></tr>
+                <tr><td>Juliana Melo</td><td>Estoquista</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Rafael Nunes</td><td>Atendente</td><td><span class="badge badge-error">Ausente</span></td></tr>
+                <tr><td>Beatriz Santos</td><td>Cozinheira</td><td><span class="badge badge-success">Presente</span></td></tr>
+                <tr><td>Thiago Oliveira</td><td>Auxiliar</td><td><span class="badge badge-success">Presente</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance / Goals -->
+      <div class="chart-container mt-xl">
+        <div class="chart-header"><h4>🎯 Metas e Indicadores de Desempenho</h4></div>
+        <div class="grid grid-3" style="margin-top:var(--space-lg);">
+          <div class="card" style="text-align:center;">
+            <h4 style="color:var(--text-secondary);font-size:0.85rem;">Meta Diária</h4>
+            <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--primary);margin:var(--space-sm) 0;">87%</div>
+            <div class="progress-bar"><div class="progress-fill orange" style="width:87%"></div></div>
+            <p class="text-xs mt-sm" style="color:var(--text-muted);">R$ 12.480 / R$ 14.350</p>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4 style="color:var(--text-secondary);font-size:0.85rem;">Tempo Médio Preparo</h4>
+            <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--success);margin:var(--space-sm) 0;">12 min</div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:75%"></div></div>
+            <p class="text-xs mt-sm" style="color:var(--text-muted);">Meta: até 15 min</p>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4 style="color:var(--text-secondary);font-size:0.85rem;">Satisfação Cliente</h4>
+            <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--secondary);margin:var(--space-sm) 0;">4.9 ⭐</div>
+            <div class="progress-bar"><div class="progress-fill yellow" style="width:98%"></div></div>
+            <p class="text-xs mt-sm" style="color:var(--text-muted);">Baseado em 89 avaliações hoje</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="chart-container mt-xl">
+        <div class="chart-header"><h4>📋 Últimos Pedidos</h4></div>
+        <div class="table-container" style="border:none;">
+          <table>
+            <thead><tr><th>#</th><th>Itens</th><th>Canal</th><th>Valor</th><th>Status</th><th>Hora</th></tr></thead>
+            <tbody>
+              <tr><td>#4523</td><td>2x Cuscuz + 1x Suco</td><td>📱 App</td><td>R$ 54,70</td><td><span class="badge badge-success">Pronto</span></td><td>15:23</td></tr>
+              <tr><td>#4522</td><td>1x Tapioca + 1x Café</td><td>🖥️ Totem</td><td>R$ 25,80</td><td><span class="badge badge-primary">Preparando</span></td><td>15:18</td></tr>
+              <tr><td>#4521</td><td>1x Café da Manhã Sertanejo</td><td>🧑‍🍳 Balcão</td><td>R$ 32,90</td><td><span class="badge badge-primary">Preparando</span></td><td>15:12</td></tr>
+              <tr><td>#4520</td><td>3x Bolo de Macaxeira</td><td>📱 App</td><td>R$ 26,70</td><td><span class="badge badge-error">Cancelado</span></td><td>14:55</td></tr>
+              <tr><td>#4519</td><td>1x Acarajé + 2x Suco Cajá</td><td>⚡ Pick-up</td><td>R$ 32,70</td><td><span class="badge badge-success">Entregue</span></td><td>14:42</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    function checkMobile() {
+      const toggle = document.getElementById('sidebarToggle2');
+      if (toggle) toggle.style.display = window.innerWidth <= 1024 ? 'inline-flex' : 'none';
+    }
+    window.addEventListener('resize', checkMobile);
+    document.addEventListener('DOMContentLoaded', checkMobile);
+  </script>
+</body>
+</html>

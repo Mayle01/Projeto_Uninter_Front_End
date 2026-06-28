@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel Administrativo da Matriz — Raízes do Nordeste. Relatórios, vendas e gestão da franquia.">
+  <title>Painel da Matriz — Raízes do Nordeste</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon" style="width:32px;height:32px;font-size:1rem;">🌿</div>
+        <span>Raízes <span class="text-gradient">Admin</span></span>
+      </div>
+
+      <div class="sidebar-section-title">Principal</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="active" onclick="showSection('dashboard')">📊 Dashboard</a>
+        <a href="#" onclick="showSection('vendas')">💰 Vendas</a>
+        <a href="#" onclick="showSection('produtos')">📋 Produtos</a>
+        <a href="#" onclick="showSection('auditoria')">🔍 Auditoria</a>
+      </nav>
+
+      <div class="sidebar-section-title">Gestão</div>
+      <nav class="sidebar-nav">
+        <a href="#">🏪 Unidades</a>
+        <a href="#">👥 Usuários</a>
+        <a href="#">⭐ Fidelidade</a>
+        <a href="#">📊 Relatórios</a>
+      </nav>
+
+      <div class="sidebar-section-title">Sistema</div>
+      <nav class="sidebar-nav">
+        <a href="#">⚙️ Configurações</a>
+        <a href="#">🔒 Segurança</a>
+        <a href="index.html">🏠 Voltar ao Site</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Mobile sidebar toggle -->
+      <button class="btn btn-secondary btn-sm mb-lg" onclick="document.getElementById('adminSidebar').classList.toggle('open')" style="display:none;" id="sidebarToggle">☰ Menu</button>
+
+      <!-- Dashboard Section -->
+      <div id="section-dashboard">
+        <div class="admin-header">
+          <div>
+            <h1>Dashboard <span class="text-gradient">Matriz</span></h1>
+            <p class="header-meta">Visão consolidada de todas as unidades — Atualizado às 15:30</p>
+          </div>
+          <div class="admin-user">
+            <span class="text-sm" style="color:var(--text-secondary);">Dona Francisca</span>
+            <div class="admin-avatar">DF</div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card animate-in">
+            <div class="stat-icon orange">💰</div>
+            <div class="stat-value">R$ 48.750</div>
+            <div class="stat-label">Faturamento Diário</div>
+            <div class="stat-change positive">↑ 12% vs. ontem</div>
+          </div>
+          <div class="stat-card animate-in">
+            <div class="stat-icon green">📦</div>
+            <div class="stat-value">1.247</div>
+            <div class="stat-label">Pedidos Hoje</div>
+            <div class="stat-change positive">↑ 8% vs. ontem</div>
+          </div>
+          <div class="stat-card animate-in">
+            <div class="stat-icon blue">👥</div>
+            <div class="stat-value">892</div>
+            <div class="stat-label">Clientes Ativos</div>
+            <div class="stat-change positive">↑ 23% este mês</div>
+          </div>
+          <div class="stat-card animate-in">
+            <div class="stat-icon yellow">⭐</div>
+            <div class="stat-value">4.8</div>
+            <div class="stat-label">Avaliação Média</div>
+            <div class="stat-change positive">↑ 0.2 este mês</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+          <div class="chart-container">
+            <div class="chart-header">
+              <h4>📈 Vendas por Região</h4>
+              <select class="form-select" style="width:auto;padding:6px 12px;font-size:0.8rem;">
+                <option>Últimos 7 dias</option>
+                <option>Último mês</option>
+                <option>Último trimestre</option>
+              </select>
+            </div>
+            <div class="chart-canvas-container">
+              <canvas id="salesChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-header"><h4>🏆 Top Produtos</h4></div>
+            <div class="top-products-list">
+              <div class="top-product-item"><span class="top-product-rank gold">1</span><span class="top-product-name">Cuscuz Recheado Completo</span><span class="top-product-sales">342 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank silver">2</span><span class="top-product-name">Tapioca de Carne de Sol</span><span class="top-product-sales">298 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank bronze">3</span><span class="top-product-name">Café da Manhã Sertanejo</span><span class="top-product-sales">256 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank">4</span><span class="top-product-name">Bolo de Macaxeira</span><span class="top-product-sales">198 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank">5</span><span class="top-product-name">Suco de Cajá</span><span class="top-product-sales">187 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank">6</span><span class="top-product-name">Acarajé Baiano</span><span class="top-product-sales">145 vendas</span></div>
+              <div class="top-product-item"><span class="top-product-rank">7</span><span class="top-product-name">Canjica Nordestina</span><span class="top-product-sales">132 vendas</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue by Unit Table -->
+        <div class="chart-container mt-xl">
+          <div class="chart-header"><h4>🏪 Faturamento por Unidade</h4></div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Unidade</th><th>Pedidos</th><th>Faturamento</th><th>Ticket Médio</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Recife — Boa Viagem</td><td>312</td><td>R$ 12.480,00</td><td>R$ 40,00</td><td><span class="badge badge-success">Operando</span></td></tr>
+                <tr><td>Salvador — Pelourinho</td><td>287</td><td>R$ 10.615,00</td><td>R$ 37,00</td><td><span class="badge badge-success">Operando</span></td></tr>
+                <tr><td>Recife — Casa Forte</td><td>234</td><td>R$ 8.892,00</td><td>R$ 38,00</td><td><span class="badge badge-success">Operando</span></td></tr>
+                <tr><td>Fortaleza — Aldeota</td><td>198</td><td>R$ 6.930,00</td><td>R$ 35,00</td><td><span class="badge badge-success">Operando</span></td></tr>
+                <tr><td>João Pessoa — Tambaú</td><td>156</td><td>R$ 5.928,00</td><td>R$ 38,00</td><td><span class="badge badge-success">Operando</span></td></tr>
+                <tr><td>Natal — Ponta Negra</td><td>0</td><td>R$ 0,00</td><td>—</td><td><span class="badge badge-error">Fechada</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Channel Distribution -->
+        <div class="charts-grid mt-xl">
+          <div class="chart-container">
+            <div class="chart-header"><h4>📱 Pedidos por Canal</h4></div>
+            <div class="chart-canvas-container">
+              <canvas id="channelChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-header"><h4>📋 Atividade Recente</h4></div>
+            <div class="activity-list">
+              <div class="activity-item"><div class="activity-icon" style="background:rgba(63,185,80,0.1);">💰</div><div class="activity-info"><div class="activity-text">Venda #4523 — Boa Viagem</div><div class="activity-time">há 2 minutos</div></div></div>
+              <div class="activity-item"><div class="activity-icon" style="background:rgba(248,81,73,0.1);">❌</div><div class="activity-info"><div class="activity-text">Cancelamento #4520 — Pelourinho</div><div class="activity-time">há 15 minutos</div></div></div>
+              <div class="activity-item"><div class="activity-icon" style="background:rgba(88,166,255,0.1);">👤</div><div class="activity-info"><div class="activity-text">Novo cliente cadastrado</div><div class="activity-time">há 22 minutos</div></div></div>
+              <div class="activity-item"><div class="activity-icon" style="background:rgba(210,153,34,0.1);">⚠️</div><div class="activity-info"><div class="activity-text">Estoque baixo: Carne de Sol — Casa Forte</div><div class="activity-time">há 45 minutos</div></div></div>
+              <div class="activity-item"><div class="activity-icon" style="background:rgba(63,185,80,0.1);">💰</div><div class="activity-info"><div class="activity-text">Venda #4519 — Aldeota</div><div class="activity-time">há 1 hora</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vendas Section -->
+      <div id="section-vendas" style="display:none;">
+        <div class="admin-header"><div><h1>Relatório de <span class="text-gradient">Vendas</span></h1><p class="header-meta">Dados financeiros consolidados</p></div></div>
+        <div class="chart-container">
+          <div class="chart-header"><h4>💰 Faturamento Mensal — 2026</h4></div>
+          <div class="chart-canvas-container"><canvas id="revenueChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Produtos Section -->
+      <div id="section-produtos" style="display:none;">
+        <div class="admin-header"><div><h1>Gestão de <span class="text-gradient">Produtos</span></h1><p class="header-meta">Cardápio centralizado da rede</p></div></div>
+        <div class="table-container">
+          <table>
+            <thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Vendas/Mês</th><th>Sazonal</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Tapioca de Carne de Sol</td><td>Tapiocas</td><td>R$ 18,90</td><td>298</td><td>—</td><td><span class="badge badge-success">Ativo</span></td></tr>
+              <tr><td>Cuscuz Recheado Completo</td><td>Cuscuz</td><td>R$ 22,90</td><td>342</td><td>—</td><td><span class="badge badge-success">Ativo</span></td></tr>
+              <tr><td>Bolo de Macaxeira</td><td>Bolos</td><td>R$ 8,90</td><td>198</td><td>—</td><td><span class="badge badge-success">Ativo</span></td></tr>
+              <tr><td>Cuscuz de São João</td><td>Cuscuz</td><td>R$ 15,90</td><td>89</td><td>🎉 Junino</td><td><span class="badge badge-warning">Sazonal</span></td></tr>
+              <tr><td>Pamonha Doce</td><td>Bolos</td><td>R$ 7,90</td><td>76</td><td>🎉 Junino</td><td><span class="badge badge-warning">Sazonal</span></td></tr>
+              <tr><td>Quentão Nordestino</td><td>Bebidas</td><td>R$ 9,90</td><td>54</td><td>🎉 Junino</td><td><span class="badge badge-warning">Sazonal</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Auditoria Section -->
+      <div id="section-auditoria" style="display:none;">
+        <div class="admin-header"><div><h1>Auditoria de <span class="text-gradient">Operações</span></h1><p class="header-meta">Registro de operações sensíveis para rastreabilidade</p></div></div>
+        <div class="chart-container">
+          <div class="table-container">
+            <table>
+              <thead><tr><th>Data/Hora</th><th>Tipo</th><th>Descrição</th><th>Unidade</th><th>Usuário</th></tr></thead>
+              <tbody>
+                <tr><td>25/06 15:23</td><td><span class="badge badge-error">Cancelamento</span></td><td>Pedido #4520 cancelado — motivo: erro do cliente</td><td>Pelourinho</td><td>Gerente Maria</td></tr>
+                <tr><td>25/06 14:45</td><td><span class="badge badge-warning">Desconto</span></td><td>Desconto de 15% aplicado no pedido #4518</td><td>Boa Viagem</td><td>Gerente João</td></tr>
+                <tr><td>25/06 13:10</td><td><span class="badge badge-info">Ajuste</span></td><td>Ajuste de estoque: +50 unidades de farinha</td><td>Casa Forte</td><td>Estoquista Pedro</td></tr>
+                <tr><td>25/06 11:30</td><td><span class="badge badge-error">Cancelamento</span></td><td>Pedido #4512 — falha no pagamento</td><td>Aldeota</td><td>Sistema</td></tr>
+                <tr><td>25/06 09:15</td><td><span class="badge badge-warning">Desconto</span></td><td>Desconto fidelidade automático: 10%</td><td>Tambaú</td><td>Sistema</td></tr>
+                <tr><td>24/06 18:22</td><td><span class="badge badge-primary">Acesso</span></td><td>Login administrativo realizado</td><td>Matriz</td><td>Dona Francisca</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function showSection(section) {
+      document.querySelectorAll('[id^="section-"]').forEach(el => el.style.display = 'none');
+      document.getElementById(`section-${section}`).style.display = 'block';
+      document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+      if (section === 'vendas') initRevenueChart();
+    }
+
+    // Sales by Region Chart
+    function initCharts() {
+      const salesCtx = document.getElementById('salesChart');
+      if (salesCtx) {
+        new Chart(salesCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Recife BV', 'Salvador', 'Recife CF', 'Fortaleza', 'J. Pessoa', 'Natal'],
+            datasets: [{
+              label: 'Faturamento (R$ mil)',
+              data: [12.48, 10.61, 8.89, 6.93, 5.92, 0],
+              backgroundColor: ['#E85D04', '#F48C06', '#FAA307', '#FFBA08', '#2D6A4F', '#484F58'],
+              borderRadius: 8,
+              borderSkipped: false,
+            }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8B949E' } },
+              x: { grid: { display: false }, ticks: { color: '#8B949E' } }
+            }
+          }
+        });
+      }
+
+      // Channel distribution chart
+      const channelCtx = document.getElementById('channelChart');
+      if (channelCtx) {
+        new Chart(channelCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Aplicativo', 'Totem', 'Balcão', 'Pick-up'],
+            datasets: [{ data: [42, 28, 18, 12], backgroundColor: ['#E85D04', '#FAA307', '#2D6A4F', '#58A6FF'], borderWidth: 0 }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { position: 'bottom', labels: { color: '#8B949E', padding: 15, usePointStyle: true } } },
+            cutout: '65%'
+          }
+        });
+      }
+    }
+
+    function initRevenueChart() {
+      const ctx = document.getElementById('revenueChart');
+      if (!ctx || ctx.chart) return;
+      ctx.chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+          datasets: [{
+            label: 'Faturamento (R$ mil)',
+            data: [320, 380, 420, 460, 510, 580],
+            borderColor: '#E85D04',
+            backgroundColor: 'rgba(232,93,4,0.1)',
+            fill: true, tension: 0.4, pointRadius: 6, pointBackgroundColor: '#E85D04', pointBorderColor: '#0D1117', pointBorderWidth: 3,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8B949E', callback: v => `R$ ${v}k` } },
+            x: { grid: { display: false }, ticks: { color: '#8B949E' } }
+          }
+        }
+      });
+    }
+
+    // Responsive sidebar toggle
+    function checkMobile() {
+      const toggle = document.getElementById('sidebarToggle');
+      if (toggle) toggle.style.display = window.innerWidth <= 1024 ? 'inline-flex' : 'none';
+    }
+
+    window.addEventListener('resize', checkMobile);
+    document.addEventListener('DOMContentLoaded', () => { initCharts(); checkMobile(); });
+  </script>
+</body>
+</html>

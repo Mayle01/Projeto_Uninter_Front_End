@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login ou cadastre-se na Raízes do Nordeste para aproveitar o programa de fidelidade e acompanhar seus pedidos.">
+  <title>Login — Raízes do Nordeste</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .auth-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: var(--space-xl); }
+    .auth-container { width: 100%; max-width: 480px; }
+    .auth-card { background: var(--gradient-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-2xl); }
+    .auth-header { text-align: center; margin-bottom: var(--space-2xl); }
+    .auth-header .brand { font-size: 2rem; margin-bottom: var(--space-md); }
+    .auth-tabs { display: flex; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); margin-bottom: var(--space-xl); }
+    .auth-tab { flex: 1; padding: 12px; text-align: center; font-weight: 600; font-size: 0.9rem; cursor: pointer; background: var(--bg-card); transition: all var(--transition-fast); }
+    .auth-tab.active { background: var(--primary); color: white; }
+    .auth-tab:hover:not(.active) { background: var(--bg-card-hover); }
+
+    .lgpd-notice { background: rgba(45,106,79,0.08); border: 1px solid rgba(45,106,79,0.15); border-radius: var(--radius-md); padding: var(--space-md); margin-bottom: var(--space-lg); }
+    .lgpd-notice .lgpd-title { font-size: 0.85rem; font-weight: 600; color: var(--accent-light); margin-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm); }
+    .lgpd-notice p { font-size: 0.8rem; color: var(--text-secondary); }
+
+    .auth-footer { text-align: center; margin-top: var(--space-lg); font-size: 0.85rem; color: var(--text-secondary); }
+    .auth-footer a { color: var(--primary); font-weight: 600; }
+
+    .admin-access { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border); text-align: center; }
+    .admin-access p { font-size: 0.8rem; margin-bottom: var(--space-sm); }
+    .admin-links { display: flex; gap: var(--space-sm); justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="brand">🌿</div>
+          <h2>Raízes do <span class="text-gradient">Nordeste</span></h2>
+          <p class="text-sm mt-sm" style="color:var(--text-secondary)">Acesse sua conta ou crie uma nova</p>
+        </div>
+
+        <div class="auth-tabs">
+          <div class="auth-tab active" onclick="showTab('login')">Entrar</div>
+          <div class="auth-tab" onclick="showTab('register')">Cadastrar</div>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-input" placeholder="seu@email.com" id="loginEmail" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Senha</label>
+            <input type="password" class="form-input" placeholder="Sua senha" id="loginPassword" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Entrar</button>
+          <div class="auth-footer">
+            <a href="#">Esqueceu sua senha?</a>
+          </div>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display:none;" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label class="form-label">Nome completo</label>
+            <input type="text" class="form-input" placeholder="Seu nome" id="regName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CPF</label>
+            <input type="text" class="form-input" placeholder="000.000.000-00" id="regCpf" maxlength="14" oninput="formatCpf(this)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-input" placeholder="seu@email.com" id="regEmail" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefone</label>
+            <input type="tel" class="form-input" placeholder="(00) 00000-0000" id="regPhone" maxlength="15" oninput="formatPhone(this)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Senha</label>
+            <input type="password" class="form-input" placeholder="Mínimo 6 caracteres" id="regPassword" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirmar Senha</label>
+            <input type="password" class="form-input" placeholder="Repita a senha" id="regPasswordConfirm" required>
+          </div>
+
+          <!-- LGPD Consent -->
+          <div class="lgpd-notice">
+            <div class="lgpd-title">🔒 Proteção de Dados (LGPD)</div>
+            <p>Seus dados pessoais serão tratados conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Utilizaremos suas informações exclusivamente para:</p>
+            <ul style="font-size:0.8rem; color:var(--text-secondary); padding-left:var(--space-md); margin:var(--space-sm) 0;">
+              <li>• Processamento de pedidos e comunicações relacionadas</li>
+              <li>• Programa de fidelidade e promoções personalizadas</li>
+              <li>• Melhoria contínua dos nossos serviços</li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" id="lgpdRegConsent" required>
+              <span class="text-sm">Li e aceito a <a href="#" style="color:var(--primary)">Política de Privacidade</a> e autorizo o tratamento dos meus dados pessoais conforme a LGPD. *</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" id="marketingConsent">
+              <span class="text-sm">Desejo receber ofertas e novidades por e-mail e SMS (opcional).</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Criar Conta</button>
+        </form>
+
+        <!-- Admin / Manager links -->
+        <div class="admin-access">
+          <p style="color:var(--text-muted);">Acesso administrativo:</p>
+          <div class="admin-links">
+            <a href="admin.html" class="btn btn-sm btn-secondary">📊 Painel Matriz</a>
+            <a href="gerente.html" class="btn btn-sm btn-secondary">🏪 Painel Gerente</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    function showTab(tab) {
+      document.querySelectorAll('.auth-tab').forEach((t, i) => {
+        t.classList.toggle('active', (tab === 'login' && i === 0) || (tab === 'register' && i === 1));
+      });
+      document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+      document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+    }
+
+    function formatCpf(input) {
+      let v = input.value.replace(/\D/g, '');
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');
+      v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      input.value = v;
+    }
+
+    function formatPhone(input) {
+      let v = input.value.replace(/\D/g, '');
+      v = v.replace(/(\d{2})(\d)/, '($1) $2');
+      v = v.replace(/(\d{5})(\d)/, '$1-$2');
+      input.value = v;
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      // Simulate login
+      const user = { name: email.split('@')[0], email, points: 150, level: 'Prata' };
+      Auth.login(user);
+      Toast.show('Login realizado com sucesso!', 'success');
+      setTimeout(() => window.location.href = 'index.html', 1000);
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regPasswordConfirm').value;
+      const consent = document.getElementById('lgpdRegConsent').checked;
+
+      if (password !== confirm) { Toast.show('As senhas não coincidem.', 'error'); return; }
+      if (!consent) { Toast.show('Você precisa aceitar a Política de Privacidade.', 'error'); return; }
+
+      const user = { name, email, points: 0, level: 'Bronze', joined: new Date().toISOString() };
+      Auth.login(user);
+      Toast.show('Conta criada com sucesso! Bem-vindo(a)!', 'success');
+      setTimeout(() => window.location.href = 'index.html', 1000);
+    }
+
+    // Redirect if already logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.isLoggedIn()) {
+        Toast.show('Você já está logado.', 'info');
+      }
+    });
+  </script>
+</body>
+</html>

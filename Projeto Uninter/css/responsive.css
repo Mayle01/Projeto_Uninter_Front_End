@@ -1,0 +1,226 @@
+/* ============================================
+   RAÍZES DO NORDESTE — Responsive Breakpoints
+   ============================================ */
+
+/* ---------- Tablet (max 1024px) ---------- */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Admin sidebar */
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Mobile Large (max 768px) ---------- */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 64px;
+  }
+
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  /* Navbar */
+  .navbar-nav {
+    display: none;
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-surface);
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: var(--space-lg);
+    z-index: 999;
+  }
+
+  .navbar-nav.open {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .navbar-nav a {
+    font-size: 1.1rem;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  /* Grids */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  /* Status Steps - vertical on mobile */
+  .status-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  .status-step {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .status-step::before {
+    top: -50%;
+    left: 19px;
+    width: 3px;
+    height: 100%;
+  }
+
+  .status-step:first-child::before {
+    display: none;
+  }
+
+  /* Cookie Banner */
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Tables */
+  .table-container {
+    border-radius: var(--radius-md);
+  }
+
+  th, td {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Modal */
+  .modal {
+    padding: var(--space-xl);
+    width: 95%;
+  }
+
+  /* Hero Section */
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Product card */
+  .product-card .product-img {
+    height: 160px;
+  }
+
+  /* Stat Cards */
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+  }
+
+  /* Buttons */
+  .btn-lg {
+    padding: 14px 24px;
+  }
+
+  /* Chart */
+  .chart-container {
+    padding: var(--space-md);
+  }
+}
+
+/* ---------- Mobile Small (max 480px) ---------- */
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .product-card .product-img {
+    height: 140px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .toast {
+    min-width: auto;
+    width: calc(100vw - 32px);
+  }
+}
+
+/* ---------- Desktop Large (min 1400px) ---------- */
+@media (min-width: 1400px) {
+  :root {
+    --container-max: 1320px;
+  }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  .navbar,
+  .footer,
+  .cookie-banner,
+  .toast-container,
+  .mobile-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .page-content {
+    padding-top: 0;
+  }
+}

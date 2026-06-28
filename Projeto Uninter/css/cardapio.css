@@ -1,0 +1,216 @@
+/* ============================================
+   RAÍZES DO NORDESTE — Cardápio Styles
+   ============================================ */
+
+.cardapio-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.cardapio-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-md);
+  transition: border-color var(--transition-fast);
+}
+
+.search-box:focus-within {
+  border-color: var(--primary);
+}
+
+.search-box input {
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  min-width: 200px;
+}
+
+/* Categories Navigation */
+.categories-nav {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: none;
+}
+
+.categories-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.category-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.category-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.category-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* Product Modal */
+.product-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(5px);
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.product-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-modal {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  max-width: 450px;
+  width: 90%;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform var(--transition-base);
+}
+
+.product-modal-overlay.active .product-modal {
+  transform: scale(1);
+}
+
+.product-modal-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-modal-body {
+  padding: var(--space-xl);
+}
+
+.product-modal-body h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.product-modal-body .desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.product-modal-body .price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.product-modal-body .modal-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.qty-control button {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.qty-control button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.qty-control .qty-value {
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
+.product-modal-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.seasonal-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(250, 163, 7, 0.9);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .cardapio-header {
+    flex-direction: column;
+  }
+
+  .cardapio-filters {
+    width: 100%;
+  }
+
+  .search-box {
+    flex: 1;
+  }
+
+  .search-box input {
+    min-width: auto;
+    width: 100%;
+  }
+}
